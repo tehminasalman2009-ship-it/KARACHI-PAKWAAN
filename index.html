@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Karachi Pakwan – Order Online | Jeddah</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{--bg:#fff8ef;--fg:#2a1a14;--card:#fff;--red:#b3141b;--gold:#e8a317;--mut:#7a665c;--bd:#ecd9c4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1210;--fg:#f6ebe0;--card:#271b17;--mut:#b9a698;--bd:#3d2d26}}
+:root[data-theme="dark"]{--bg:#1a1210;--fg:#f6ebe0;--card:#271b17;--mut:#b9a698;--bd:#3d2d26}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--red);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:10px 14px;gap:8px;flex-wrap:wrap}
+.b{font-weight:800;font-size:18px}.b small{display:block;font-weight:500;font-size:12px;opacity:.9}
+nav{display:flex;gap:6px}nav button{background:rgba(255,255,255,.15);color:#fff;border:0;border-radius:20px;padding:7px 12px;font:inherit;cursor:pointer}
+main{max-width:980px;margin:auto;padding:14px 14px 90px}
+.hero{background:linear-gradient(135deg,var(--red),#7d0d12);color:#fff;border-radius:16px;padding:20px;margin-bottom:14px}
+.hero h1{margin:0 0 6px;font-size:22px}.hero p{margin:0 0 10px;opacity:.95}.hero a{color:var(--gold);font-weight:600}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;align-items:center}
+.chip{border:1px solid var(--bd);background:var(--card);color:var(--fg);border-radius:20px;padding:7px 13px;cursor:pointer;font:inherit}
+.chip.on{background:var(--red);color:#fff;border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px;justify-content:space-between}
+.card small,.mut{color:var(--mut);display:block;font-size:12px}.pr{font-weight:800;color:var(--red);font-size:17px}
+button.pri{background:var(--red);color:#fff;border:0;border-radius:10px;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer}
+button.pri:disabled{opacity:.5}
+.qt{display:flex;align-items:center;gap:12px}.qt button{width:32px;height:32px;border-radius:50%;border:1px solid var(--red);background:var(--card);color:var(--red);font-size:18px;cursor:pointer}
+input,select,textarea{width:100%;padding:10px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--fg);font:inherit;margin:4px 0}
+.bar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:6;max-width:600px;margin:auto}
+.bar button{width:100%;padding:14px;font-size:16px;box-shadow:0 4px 16px #0005}
+.dr{position:fixed;inset:0;background:#0007;z-index:20;display:none}.dr.on{display:block}
+.pn{position:absolute;right:0;top:0;bottom:0;width:min(480px,100%);background:var(--bg);overflow:auto;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
+.ln{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.sum div{display:flex;justify-content:space-between;padding:3px 0}.sum .t{font-weight:800;font-size:18px;border-top:2px solid var(--fg);margin-top:6px;padding-top:8px}
+.pay{display:flex;gap:6px;flex-wrap:wrap}
+.oc{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:12px;margin:10px 0}
+.stp{display:flex;gap:4px;margin:10px 0;overflow-x:auto}.stp div{flex:1;min-width:64px;text-align:center;font-size:11px;color:var(--mut)}
+.stp i{display:block;height:6px;border-radius:3px;background:var(--bd);margin-bottom:4px}.stp .d{color:var(--fg);font-weight:700}.stp .d i{background:#2e9e4f}
+.tag{display:inline-block;padding:2px 9px;border-radius:12px;background:var(--gold);color:#000;font-size:12px;font-weight:700}
+.x{float:right;background:none;border:0;color:var(--fg);font-size:24px;cursor:pointer}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:13px}footer a{color:var(--red)}
+</style></head><body>
+<header><div class="b">🍛 Karachi Pakwan<small>اطباق كراتشي · Jeddah</small></div>
+<nav><button onclick="go('menu')">Menu</button><button onclick="go('track')">Track</button><button onclick="go('admin')">Admin</button><button onclick="openDr()">🛒 <span id="cc">0</span></button></nav></header>
+<main id="app"></main>
+<div class="bar" id="bar"></div>
+<div class="dr" id="dr"><div class="pn" id="pn"></div></div>
+<footer>All prices in SAR and include 15% VAT · <a href="https://maps.app.goo.gl/roQagiDCzu7B6pKF8" target="_blank">📍 Restaurant location</a></footer>
+<script>
+const I={mp:['Mutton Pulao',28,52,100],cb:['Chicken Biryani',22,42,80],mag:['Mutton Achar Gosht',25,48,95],ckk:['Chicken Koyla Karahi',19,38,75],aac:['Alu Anda Curry',13,25,45],aq:['Alo Qeema',19,38,75],dg:['Daal Ghost',19,38,75],dk:['Daal Kashmiri',12,22,42],dm:['Daal Maash',10,20,35],dc:['Daal Chana',10,20,35],dag:['Daal Anda Ghutala',15,28,55],ap:['Aalo Palak',13,25,50],pr:['Plain Rice',5,10,20],kk:['Khoya Kheer',8,15,0],ms:['Mutton Stew',28,55,105],cpu:['Chana Pulao',15,28,55],ag:['Alo Ghobi',13,25,45],aqt:['Alo Qatli',13,25,45],dch:['Daal Chawal',18,35,70],ch:['Chicken Haleem',15,28,40],mtg:['Mutton Tenday Gosht',19,38,75],cpl:['Chicken Pulao',22,42,80],mk:['Mutton Karahi',25,48,95],mc:['Murgh Chanay',19,38,75],ach:['Anda Chholay',13,25,45],bm:['Bhindi Masala',15,28,55],bh:['Beef Haleem',18,35,50],mb:['Mutton Biryani',28,52,100],mpl:['Mutter Pulao',15,28,55],cq:['Chicken Qorma',19,38,75],lsh:['Labe Shereen',10,18,0],cp:['Cow Paya',26,50,95],sh:['Shermal',6,0,0],tf:['Taftan',5,0,0],bb:['Beef Biryani',26,50,100],bpu:['Beef Pulao',26,50,100],mr:['Mutton Rosh',23,45,85],kp:['Karhi Pakora',13,25,45],kc:['Karhi Chawal',18,35,65],agt:['Aaloo Gosht',19,38,75],c90:['Chicken 90 Biryani (Dum, 90-min prep)',120,220,300],b90:['Beef 90 Biryani (Dum, 90-min prep)',130,250,330]};
+const MN={1:{L:'mp cb mag ckk aac aq dg dk dm dc dag ap pr kk',D:'cb ckk mag aac aq dg dk dm dc dag ap pr kk'},2:{L:'ms cb cpu aq aac ckk ag aqt dch dc dk dm dag pr kk',D:'ms ch cb aq ckk ag aac aqt mtg dch dc dk dm dag pr kk'},3:{L:'cb cpl aq ckk mk aac mc ach dg bm dag dk dc dm pr kk',D:'cb cpl aq mk mc ach aac bm dag dk dc dm pr kk'},4:{L:'bh ms cb mb aq aac mpl cq ckk dag dg dk dc dm ap pr lsh',D:'bh cp ms cb cq ckk ap dag dg dk dc dm pr sh tf lsh'},6:{L:'cb ms bb cpl dg aq aac ckk ag dk pr dm dc dag kk lsh',D:'mr ms cb bb dg aq aac ckk ag pr dag dk dc dm kk lsh'},0:{L:'cb ms bpu ckk aq aac kp kc dg dag dk dc dm bm pr kk',D:'agt ms ckk aq cb aac kp kc dg dag dk dc dm bm pr kk'}};
+const AREAS={'Al Hamra':15,'Al Rawdah':15,'Al Safa':18,'Al Salamah':15,'Al Sharafeyah':12,'Al Nuzha':20,'Al Naseem':20,'Al Aziziyah':15,'Al Faisaliyah':15,'Al Marwah':18,'Al Basateen':15,'Al Balad (Old Jeddah)':20,'Obhur / North Jeddah':30};
+const F1=['Placed','Accepted','Preparing','Ready','Out for Delivery','Delivered'],F2=['Placed','Accepted','Preparing','Ready for Pickup','Collected'];
+const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let mem={};const ld=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):(mem[k]??d)}catch(e){return mem[k]??d}};const sv=(k,v)=>{mem[k]=v;try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const now=new Date(),S={v:'menu',day:now.getDay(),meal:now.getHours()<16?'L':'D',size:0,cart:{},mode:'delivery',pay:'cash',f:ld('kp_cust',{}),q:ld('kp_last',''),auth:false,done:null};
+const lbl=(id,i)=>id.endsWith('90')?['1 KG','2 KG','3 KG'][i]:['Single · 1 serving','Double · 2 servings','Family · 4 servings'][i];
+const cnt=()=>Object.values(S.cart).reduce((a,b)=>a+b,0);
+function ids(){const m=MN[S.day==5?6:S.day][S.meal].split(' ');if(S.day!=4)m.push('c90');if(S.day==1||S.day==3)m.push('b90');return m}
+function calc(){let sub=0;for(const k in S.cart){const[id,i]=k.split(':');sub+=I[id][+i+1]*S.cart[k]}const fee=S.mode=='delivery'&&S.f.area?AREAS[S.f.area]:0,total=sub+fee;return{sub,fee,total,vat:+(total*15/115).toFixed(2)}}
+function go(v){S.v=v;render()}
+function add(k,n){S.cart[k]=(S.cart[k]||0)+n;if(S.cart[k]<=0)delete S.cart[k];render();if($('#dr').classList.contains('on'))vDr()}
+function render(){$('#cc').textContent=cnt();({menu:vMenu,track:vTrack,admin:vAdmin})[S.v]();const c=calc();$('#bar').innerHTML=cnt()&&S.v=='menu'?`<button class="pri" onclick="openDr()">View cart · ${cnt()} items · ${c.sub} SAR</button>`:''}
+function vMenu(){const nm=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+$('#app').innerHTML=`<section class="hero"><h1>Authentic Pakistani Home Cooking</h1><p>Fresh Lunch &amp; Dinner menu every day · Delivery across Jeddah or Pickup</p><a href="https://maps.app.goo.gl/roQagiDCzu7B6pKF8" target="_blank">📍 Find us on the map</a></section>
+<div class="row">${[1,2,3,4,5,6,0].map(x=>`<button class="chip ${x==S.day?'on':''}" onclick="S.day=${x};render()">${nm[x]}${x==now.getDay()?' · Today':''}</button>`).join('')}</div>
+<div class="row"><button class="chip ${S.meal=='L'?'on':''}" onclick="S.meal='L';render()">☀️ Lunch</button><button class="chip ${S.meal=='D'?'on':''}" onclick="S.meal='D';render()">🌙 Dinner</button></div>
+<div class="row"><b>Pack:</b>${[0,1,2].map(i=>`<button class="chip ${S.size==i?'on':''}" onclick="S.size=${i};render()">${['Single','Double','Family'][i]}</button>`).join('')}<span class="mut">1 / 2 / 4 servings</span></div>
+<div class="grid">${ids().map(id=>{const it=I[id],p=it[S.size+1],k=id+':'+S.size,q=S.cart[k]||0;return`<div class="card"><div><b>${it[0]}</b><small>${lbl(id,S.size)}</small></div><div class="pr">${p?p+' SAR':'—'}</div>${!p?'<small>Not offered in this size</small>':q?`<div class="qt"><button onclick="add('${k}',-1)">−</button><b>${q}</b><button onclick="add('${k}',1)">+</button></div>`:`<button class="pri" onclick="add('${k}',1)">Add</button>`}</div>`}).join('')}</div>`}
+function openDr(){S.done=null;$('#dr').classList.add('on');vDr()}function closeDr(){$('#dr').classList.remove('on')}
+function vDr(){const c=calc(),keys=Object.keys(S.cart),f=S.f;
+if(S.done){$('#pn').innerHTML=`<button class="x" onclick="closeDr()">×</button><h2>✅ Order placed!</h2><p>Your order number</p><h1 style="color:var(--red)">${S.done.id}</h1><p>Total paid/payable: <b>${S.done.total} SAR</b> (incl. VAT ${S.done.vat})</p><button class="pri" onclick="S.q='${S.done.id}';closeDr();go('track')">Track my order</button>`;return}
+if(!keys.length){$('#pn').innerHTML=`<button class="x" onclick="closeDr()">×</button><h2>Your cart</h2><p class="mut">Your cart is empty.</p>`;return}
+$('#pn').innerHTML=`<button class="x" onclick="closeDr()">×</button><h2>Your order</h2>
+${keys.map(k=>{const[id,i]=k.split(':');return`<div class="ln"><div><b>${I[id][0]}</b><small class="mut">${lbl(id,+i)} · ${I[id][+i+1]} SAR</small></div><div class="qt"><button onclick="add('${k}',-1)">−</button><b>${S.cart[k]}</b><button onclick="add('${k}',1)">+</button></div></div>`}).join('')}
+<div class="row"><button class="chip ${S.mode=='delivery'?'on':''}" onclick="S.mode='delivery';vDr()">🛵 Delivery</button><button class="chip ${S.mode=='pickup'?'on':''}" onclick="S.mode='pickup';vDr()">🏪 Pickup (free)</button></div>
+<input placeholder="Full name" value="${E(f.name)}" oninput="S.f.name=this.value"><input placeholder="Mobile (05xxxxxxxx)" inputmode="tel" value="${E(f.phone)}" oninput="S.f.phone=this.value">
+${S.mode=='delivery'?`<select onchange="S.f.area=this.value;vDr()"><option value="">Select your area…</option>${Object.keys(AREAS).map(a=>`<option ${f.area==a?'selected':''} value="${a}">${a} — ${AREAS[a]} SAR</option>`).join('')}</select><textarea rows="2" placeholder="Street, building, landmark" oninput="S.f.addr=this.value">${E(f.addr)}</textarea>`:'<p class="mut">Pick up from the restaurant when status shows “Ready for Pickup”.</p>'}
+<h3>Payment</h3><div class="pay"><button class="chip ${S.pay=='cash'?'on':''}" onclick="S.pay='cash';vDr()">💵 ${S.mode=='delivery'?'Cash on delivery':'Cash at pickup'}</button><button class="chip ${S.pay=='mada'?'on':''}" onclick="S.pay='mada';vDr()">💳 mada / Card</button><button class="chip ${S.pay=='apple'?'on':''}" onclick="S.pay='apple';vDr()">Apple Pay</button></div>
+${S.pay=='mada'?`<input placeholder="Card number" inputmode="numeric" maxlength="19" id="cn"><div class="row"><input placeholder="MM/YY" maxlength="5" id="ce" style="flex:1"><input placeholder="CVV" maxlength="4" inputmode="numeric" id="cv" style="flex:1"></div><small class="mut">Demo payment – the live site connects to a Saudi gateway (mada, Apple Pay).</small>`:''}${S.pay=='apple'?'<small class="mut">Apple Pay sheet is simulated in this demo.</small>':''}
+<div class="sum"><div><span>Subtotal</span><span>${c.sub} SAR</span></div><div><span>Delivery fee</span><span>${c.fee} SAR</span></div><div class="t"><span>Total</span><span>${c.total} SAR</span></div><div class="mut"><span>VAT 15% included</span><span>${c.vat} SAR</span></div></div>
+<div id="er" style="color:#c33;font-weight:700;margin:8px 0"></div><p><button class="pri" style="width:100%" id="pb" onclick="place()">${S.pay=='cash'?'Place order (Cash)':S.pay=='apple'?'Pay with Apple Pay':'Pay & place order'} · ${c.total} SAR</button></p>`}
+function place(){const f=S.f,c=calc();let er='';
+if(!f.name||f.name.trim().length<2)er='Please enter your name.';else if(!/^(05\d{8}|\+?9665\d{8})$/.test((f.phone||'').replace(/\s/g,'')))er='Enter a valid Saudi mobile number.';else if(S.mode=='delivery'&&!f.area)er='Please select your delivery area.';else if(S.mode=='delivery'&&!(f.addr||'').trim())er='Please enter your address.';
+else if(S.pay=='mada'&&(($('#cn').value.replace(/\s/g,'')).length<16||!/^\d\d\/\d\d$/.test($('#ce').value)||$('#cv').value.length<3))er='Please check your card details.';
+if(er){const e=$('#er');e.textContent=er;e.scrollIntoView({block:'center'});return}
+const b=$('#pb');b.disabled=true;b.textContent=S.pay=='cash'?'Placing…':'Processing payment…';
+setTimeout(()=>{const o={id:'KP'+Math.floor(10000+Math.random()*90000),name:f.name.trim(),phone:f.phone.replace(/\s/g,''),addr:S.mode=='delivery'?f.addr.trim():'',area:S.mode=='delivery'?f.area:'',type:S.mode,pay:S.pay,paid:S.pay!='cash',items:Object.keys(S.cart).map(k=>{const[id,i]=k.split(':');return{n:I[id][0],z:lbl(id,+i),q:S.cart[k],p:I[id][+i+1]}}),...c,s:0,x:false,t:new Date().toLocaleString('en-GB'),meal:(S.meal=='L'?'Lunch':'Dinner')};
+const a=ld('kp_orders',[]);a.unshift(o);sv('kp_orders',a);sv('kp_cust',{name:f.name,phone:f.phone,area:f.area,addr:f.addr});sv('kp_last',o.id);S.q=o.id;S.cart={};S.done=o;render();vDr()},S.pay=='cash'?400:1200)}
+function stepper(o){const F=o.type=='delivery'?F1:F2;if(o.x)return'<span class="tag" style="background:#c33;color:#fff">Cancelled</span>';return`<div class="stp">${F.map((x,i)=>`<div class="${i<=o.s?'d':''}"><i></i>${x}</div>`).join('')}</div>`}
+function card(o,adm){const F=o.type=='delivery'?F1:F2;return`<div class="oc"><b>${o.id}</b> <span class="tag">${o.x?'Cancelled':F[o.s]}</span> <span class="mut">${o.t} · ${o.meal}</span>
+${stepper(o)}<div>${o.items.map(i=>`${i.q}× ${E(i.n)} <span class="mut" style="display:inline">(${i.z})</span>`).join('<br>')}</div>
+<p class="mut">${o.type=='delivery'?'🛵 '+E(o.area)+' – '+E(o.addr):'🏪 Pickup'} · ${o.pay=='cash'?'💵 Cash':o.pay=='mada'?'💳 mada (paid)':'Apple Pay (paid)'}</p>
+<b>Total ${o.total} SAR</b> <span class="mut" style="display:inline">(delivery ${o.fee} · VAT incl. ${o.vat})</span>
+${adm?`<p>👤 ${E(o.name)} · <a href="tel:${E(o.phone)}">${E(o.phone)}</a></p>${!o.x&&o.s<F.length-1?`<button class="pri" onclick="adv('${o.id}')">→ ${F[o.s+1]}</button> <button class="chip" onclick="cx('${o.id}')">Cancel</button>`:''}`:''}</div>`}
+function vTrack(){$('#app').innerHTML=`<h2>Track your order</h2><div class="row"><input id="tq" placeholder="Order number (KP12345) or mobile number" value="${E(S.q)}" oninput="S.q=this.value;trk()"></div><div id="tr"></div>`;trk()}
+function trk(){const q=(S.q||'').trim().toUpperCase().replace(/\s/g,''),r=q?ld('kp_orders',[]).filter(o=>o.id==q||o.phone.toUpperCase()==q):[];$('#tr').innerHTML=!q?'<p class="mut">Enter your order number or phone to see live status.</p>':r.length?r.map(o=>card(o,false)).join(''):'<p class="mut">No order found.</p>'}
+function vAdmin(){if(!S.auth){$('#app').innerHTML='<h2>Admin login</h2><input id="pin" type="password" inputmode="numeric" placeholder="PIN (demo: 1234)"><button class="pri" onclick="if($(\'#pin\').value===\'1234\'){S.auth=true;vAdmin()}else $(\'#pm\').textContent=\'Wrong PIN\'">Login</button><p id="pm" style="color:#c33"></p>';return}
+$('#app').innerHTML=`<h2>Restaurant admin</h2><div id="st" class="row"></div><div id="al"></div><button class="chip" onclick="sv('kp_orders',[]);adm()">Reset demo data</button>`;adm()}
+function adm(){const a=ld('kp_orders',[]),act=a.filter(o=>!o.x),rev=act.reduce((s,o)=>s+o.total,0);
+$('#st').innerHTML=`<span class="tag">${a.filter(o=>!o.x&&o.s==0).length} new</span><span class="tag">${act.length} orders</span><span class="tag">${rev} SAR sales</span><span class="tag">VAT ${act.reduce((s,o)=>s+o.vat,0).toFixed(2)}</span>`;
+$('#al').innerHTML=a.length?a.map(o=>card(o,true)).join(''):'<p class="mut">No orders yet. Place one from the Menu tab.</p>'}
+function adv(id){const a=ld('kp_orders',[]),o=a.find(x=>x.id==id);o.s++;sv('kp_orders',a);adm()}
+function cx(id){const a=ld('kp_orders',[]);a.find(x=>x.id==id).x=true;sv('kp_orders',a);adm()}
+window.addEventListener('storage',()=>{if(S.v=='track')trk();if(S.v=='admin'&&S.auth)adm()});
+setInterval(()=>{if(S.v=='track'&&document.activeElement.id!='tq')trk();if(S.v=='admin'&&S.auth)adm()},3000);
+render();
+</script></body></html>
